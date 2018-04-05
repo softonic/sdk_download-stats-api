@@ -1,6 +1,6 @@
 {
-    "name": "softonic/sdk_download-stats-api",
-    "version": "1.0.0",
+    "name": "softonic/download_stats_api_sdk",
+    "version": "1.1.0",
     "description": "",
     "keywords": [
         "swagger",
