@@ -1,6 +1,6 @@
 # Softonic\DownloadStatsApiSdk\DownloadStatsApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://download-stats-v1.eu-west.sftapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
