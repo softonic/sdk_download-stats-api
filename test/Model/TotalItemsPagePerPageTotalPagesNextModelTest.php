@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStatsTest
+ * TotalItemsPagePerPageTotalPagesNextModelTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Softonic\DownloadStatsApiSdk;
 
 /**
- * DownloadStatsTest Class Doc Comment
+ * TotalItemsPagePerPageTotalPagesNextModelTest Class Doc Comment
  *
  * @category    Class */
-// * @description DownloadStats
+// * @description TotalItemsPagePerPageTotalPagesNextModel
 /**
  * @package     Softonic\DownloadStatsApiSdk
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStatsTest extends \PHPUnit_Framework_TestCase
+class TotalItemsPagePerPageTotalPagesNextModelTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,51 +71,44 @@ class DownloadStatsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "DownloadStats"
+     * Test "TotalItemsPagePerPageTotalPagesNextModel"
      */
-    public function testDownloadStats()
+    public function testTotalItemsPagePerPageTotalPagesNextModel()
     {
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "total_items"
      */
-    public function testPropertyId()
+    public function testPropertyTotalItems()
     {
     }
 
     /**
-     * Test attribute "locale"
+     * Test attribute "page"
      */
-    public function testPropertyLocale()
+    public function testPropertyPage()
     {
     }
 
     /**
-     * Test attribute "country"
+     * Test attribute "per_page"
      */
-    public function testPropertyCountry()
+    public function testPropertyPerPage()
     {
     }
 
     /**
-     * Test attribute "app_id"
+     * Test attribute "total_pages"
      */
-    public function testPropertyAppId()
+    public function testPropertyTotalPages()
     {
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "next"
      */
-    public function testPropertyDate()
-    {
-    }
-
-    /**
-     * Test attribute "downloads"
-     */
-    public function testPropertyDownloads()
+    public function testPropertyNext()
     {
     }
 }

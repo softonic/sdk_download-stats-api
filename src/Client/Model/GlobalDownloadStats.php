@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStats
+ * GlobalDownloadStats
  *
  * PHP version 5
  *
@@ -34,14 +34,14 @@ use \JsonSerializable;
 use \Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * DownloadStats Class Doc Comment
+ * GlobalDownloadStats Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
+class GlobalDownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DownloadStats';
+    protected static $swaggerModelName = 'GlobalDownloadStats';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'locale' => 'string',
-        'country' => 'string',
-        'app_id' => 'string',
-        'date' => '\DateTime',
+        'id_program' => 'string',
         'downloads' => 'int'
     ];
 
@@ -72,11 +68,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'locale' => null,
-        'country' => null,
-        'app_id' => null,
-        'date' => 'date-time',
+        'id_program' => null,
         'downloads' => null
     ];
 
@@ -107,11 +99,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'locale' => 'locale',
-        'country' => 'country',
-        'app_id' => 'appId',
-        'date' => 'date',
+        'id_program' => 'id_program',
         'downloads' => 'downloads'
     ];
 
@@ -121,11 +109,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'locale' => 'setLocale',
-        'country' => 'setCountry',
-        'app_id' => 'setAppId',
-        'date' => 'setDate',
+        'id_program' => 'setIdProgram',
         'downloads' => 'setDownloads'
     ];
 
@@ -135,11 +119,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'locale' => 'getLocale',
-        'country' => 'getCountry',
-        'app_id' => 'getAppId',
-        'date' => 'getDate',
+        'id_program' => 'getIdProgram',
         'downloads' => 'getDownloads'
     ];
 
@@ -203,11 +183,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
-        $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
-        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
+        $this->container['id_program'] = isset($data['id_program']) ? $data['id_program'] : null;
         $this->container['downloads'] = isset($data['downloads']) ? $data['downloads'] : null;
     }
 
@@ -220,20 +196,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['locale'] === null) {
-            $invalidProperties[] = "'locale' can't be null";
-        }
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
-        }
-        if ($this->container['app_id'] === null) {
-            $invalidProperties[] = "'app_id' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
+        if ($this->container['id_program'] === null) {
+            $invalidProperties[] = "'id_program' can't be null";
         }
         if ($this->container['downloads'] === null) {
             $invalidProperties[] = "'downloads' can't be null";
@@ -250,19 +214,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
-            return false;
-        }
-        if ($this->container['locale'] === null) {
-            return false;
-        }
-        if ($this->container['country'] === null) {
-            return false;
-        }
-        if ($this->container['app_id'] === null) {
-            return false;
-        }
-        if ($this->container['date'] === null) {
+        if ($this->container['id_program'] === null) {
             return false;
         }
         if ($this->container['downloads'] === null) {
@@ -273,121 +225,25 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id Download stats identifier
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets locale
+     * Gets id_program
      *
      * @return string
      */
-    public function getLocale()
+    public function getIdProgram()
     {
-        return $this->container['locale'];
+        return $this->container['id_program'];
     }
 
     /**
-     * Sets locale
+     * Sets id_program
      *
-     * @param string $locale Locale
+     * @param string $id_program Program identifier
      *
      * @return $this
      */
-    public function setLocale($locale)
+    public function setIdProgram($id_program)
     {
-        $this->container['locale'] = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string $country Country
-     *
-     * @return $this
-     */
-    public function setCountry($country)
-    {
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets app_id
-     *
-     * @return string
-     */
-    public function getAppId()
-    {
-        return $this->container['app_id'];
-    }
-
-    /**
-     * Sets app_id
-     *
-     * @param string $app_id App id
-     *
-     * @return $this
-     */
-    public function setAppId($app_id)
-    {
-        $this->container['app_id'] = $app_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date Date
-     *
-     * @return $this
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
+        $this->container['id_program'] = $id_program;
 
         return $this;
     }

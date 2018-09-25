@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStats
+ * ItemsPaginationModel
  *
  * PHP version 5
  *
@@ -34,14 +34,14 @@ use \JsonSerializable;
 use \Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * DownloadStats Class Doc Comment
+ * ItemsPaginationModel Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
+class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializable
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DownloadStats';
+    protected static $swaggerModelName = 'ItemsPaginationModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'locale' => 'string',
-        'country' => 'string',
-        'app_id' => 'string',
-        'date' => '\DateTime',
-        'downloads' => 'int'
+        'items' => '\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats[]',
+        'pagination' => '\Softonic\DownloadStatsApiSdk\Client\Model\TotalItemsPagePerPageTotalPagesNextModel'
     ];
 
     /**
@@ -72,12 +68,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'locale' => null,
-        'country' => null,
-        'app_id' => null,
-        'date' => 'date-time',
-        'downloads' => null
+        'items' => null,
+        'pagination' => null
     ];
 
     /**
@@ -107,12 +99,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'locale' => 'locale',
-        'country' => 'country',
-        'app_id' => 'appId',
-        'date' => 'date',
-        'downloads' => 'downloads'
+        'items' => 'items',
+        'pagination' => 'pagination'
     ];
 
     /**
@@ -121,12 +109,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'locale' => 'setLocale',
-        'country' => 'setCountry',
-        'app_id' => 'setAppId',
-        'date' => 'setDate',
-        'downloads' => 'setDownloads'
+        'items' => 'setItems',
+        'pagination' => 'setPagination'
     ];
 
     /**
@@ -135,12 +119,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'locale' => 'getLocale',
-        'country' => 'getCountry',
-        'app_id' => 'getAppId',
-        'date' => 'getDate',
-        'downloads' => 'getDownloads'
+        'items' => 'getItems',
+        'pagination' => 'getPagination'
     ];
 
     /**
@@ -203,12 +183,8 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
-        $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
-        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
-        $this->container['downloads'] = isset($data['downloads']) ? $data['downloads'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
     }
 
     /**
@@ -220,24 +196,6 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['locale'] === null) {
-            $invalidProperties[] = "'locale' can't be null";
-        }
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
-        }
-        if ($this->container['app_id'] === null) {
-            $invalidProperties[] = "'app_id' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
-        if ($this->container['downloads'] === null) {
-            $invalidProperties[] = "'downloads' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -250,168 +208,54 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
-            return false;
-        }
-        if ($this->container['locale'] === null) {
-            return false;
-        }
-        if ($this->container['country'] === null) {
-            return false;
-        }
-        if ($this->container['app_id'] === null) {
-            return false;
-        }
-        if ($this->container['date'] === null) {
-            return false;
-        }
-        if ($this->container['downloads'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets id
+     * Gets items
      *
-     * @return int
+     * @return \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats[]
      */
-    public function getId()
+    public function getItems()
     {
-        return $this->container['id'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets id
+     * Sets items
      *
-     * @param int $id Download stats identifier
+     * @param \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats[] $items items
      *
      * @return $this
      */
-    public function setId($id)
+    public function setItems($items)
     {
-        $this->container['id'] = $id;
+        $this->container['items'] = $items;
 
         return $this;
     }
 
     /**
-     * Gets locale
+     * Gets pagination
      *
-     * @return string
+     * @return \Softonic\DownloadStatsApiSdk\Client\Model\TotalItemsPagePerPageTotalPagesNextModel
      */
-    public function getLocale()
+    public function getPagination()
     {
-        return $this->container['locale'];
+        return $this->container['pagination'];
     }
 
     /**
-     * Sets locale
+     * Sets pagination
      *
-     * @param string $locale Locale
+     * @param \Softonic\DownloadStatsApiSdk\Client\Model\TotalItemsPagePerPageTotalPagesNextModel $pagination pagination
      *
      * @return $this
      */
-    public function setLocale($locale)
+    public function setPagination($pagination)
     {
-        $this->container['locale'] = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string $country Country
-     *
-     * @return $this
-     */
-    public function setCountry($country)
-    {
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets app_id
-     *
-     * @return string
-     */
-    public function getAppId()
-    {
-        return $this->container['app_id'];
-    }
-
-    /**
-     * Sets app_id
-     *
-     * @param string $app_id App id
-     *
-     * @return $this
-     */
-    public function setAppId($app_id)
-    {
-        $this->container['app_id'] = $app_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date Date
-     *
-     * @return $this
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets downloads
-     *
-     * @return int
-     */
-    public function getDownloads()
-    {
-        return $this->container['downloads'];
-    }
-
-    /**
-     * Sets downloads
-     *
-     * @param int $downloads Number of downloads
-     *
-     * @return $this
-     */
-    public function setDownloads($downloads)
-    {
-        $this->container['downloads'] = $downloads;
+        $this->container['pagination'] = $pagination;
 
         return $this;
     }

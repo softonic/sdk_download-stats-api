@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStatsTest
+ * GlobalDownloadStatsTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Softonic\DownloadStatsApiSdk;
 
 /**
- * DownloadStatsTest Class Doc Comment
+ * GlobalDownloadStatsTest Class Doc Comment
  *
  * @category    Class */
-// * @description DownloadStats
+// * @description GlobalDownloadStats
 /**
  * @package     Softonic\DownloadStatsApiSdk
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStatsTest extends \PHPUnit_Framework_TestCase
+class GlobalDownloadStatsTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,44 +71,16 @@ class DownloadStatsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "DownloadStats"
+     * Test "GlobalDownloadStats"
      */
-    public function testDownloadStats()
+    public function testGlobalDownloadStats()
     {
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "id_program"
      */
-    public function testPropertyId()
-    {
-    }
-
-    /**
-     * Test attribute "locale"
-     */
-    public function testPropertyLocale()
-    {
-    }
-
-    /**
-     * Test attribute "country"
-     */
-    public function testPropertyCountry()
-    {
-    }
-
-    /**
-     * Test attribute "app_id"
-     */
-    public function testPropertyAppId()
-    {
-    }
-
-    /**
-     * Test attribute "date"
-     */
-    public function testPropertyDate()
+    public function testPropertyIdProgram()
     {
     }
 

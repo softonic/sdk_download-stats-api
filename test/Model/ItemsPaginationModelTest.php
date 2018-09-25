@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStatsTest
+ * ItemsPaginationModelTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Softonic\DownloadStatsApiSdk;
 
 /**
- * DownloadStatsTest Class Doc Comment
+ * ItemsPaginationModelTest Class Doc Comment
  *
  * @category    Class */
-// * @description DownloadStats
+// * @description ItemsPaginationModel
 /**
  * @package     Softonic\DownloadStatsApiSdk
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStatsTest extends \PHPUnit_Framework_TestCase
+class ItemsPaginationModelTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,51 +71,23 @@ class DownloadStatsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "DownloadStats"
+     * Test "ItemsPaginationModel"
      */
-    public function testDownloadStats()
+    public function testItemsPaginationModel()
     {
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "items"
      */
-    public function testPropertyId()
+    public function testPropertyItems()
     {
     }
 
     /**
-     * Test attribute "locale"
+     * Test attribute "pagination"
      */
-    public function testPropertyLocale()
-    {
-    }
-
-    /**
-     * Test attribute "country"
-     */
-    public function testPropertyCountry()
-    {
-    }
-
-    /**
-     * Test attribute "app_id"
-     */
-    public function testPropertyAppId()
-    {
-    }
-
-    /**
-     * Test attribute "date"
-     */
-    public function testPropertyDate()
-    {
-    }
-
-    /**
-     * Test attribute "downloads"
-     */
-    public function testPropertyDownloads()
+    public function testPropertyPagination()
     {
     }
 }

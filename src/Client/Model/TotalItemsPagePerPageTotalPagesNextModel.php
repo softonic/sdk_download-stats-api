@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStats
+ * TotalItemsPagePerPageTotalPagesNextModel
  *
  * PHP version 5
  *
@@ -34,14 +34,14 @@ use \JsonSerializable;
 use \Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * DownloadStats Class Doc Comment
+ * TotalItemsPagePerPageTotalPagesNextModel Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
+class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayAccess, JsonSerializable
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DownloadStats';
+    protected static $swaggerModelName = 'TotalItemsPagePerPageTotalPagesNextModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,11 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'locale' => 'string',
-        'country' => 'string',
-        'app_id' => 'string',
-        'date' => '\DateTime',
-        'downloads' => 'int'
+        'total_items' => 'int',
+        'page' => 'int',
+        'per_page' => 'int',
+        'total_pages' => 'int',
+        'next' => 'string'
     ];
 
     /**
@@ -72,12 +71,11 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'locale' => null,
-        'country' => null,
-        'app_id' => null,
-        'date' => 'date-time',
-        'downloads' => null
+        'total_items' => null,
+        'page' => null,
+        'per_page' => null,
+        'total_pages' => null,
+        'next' => null
     ];
 
     /**
@@ -107,12 +105,11 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'locale' => 'locale',
-        'country' => 'country',
-        'app_id' => 'appId',
-        'date' => 'date',
-        'downloads' => 'downloads'
+        'total_items' => 'totalItems',
+        'page' => 'page',
+        'per_page' => 'perPage',
+        'total_pages' => 'totalPages',
+        'next' => 'next'
     ];
 
     /**
@@ -121,12 +118,11 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'locale' => 'setLocale',
-        'country' => 'setCountry',
-        'app_id' => 'setAppId',
-        'date' => 'setDate',
-        'downloads' => 'setDownloads'
+        'total_items' => 'setTotalItems',
+        'page' => 'setPage',
+        'per_page' => 'setPerPage',
+        'total_pages' => 'setTotalPages',
+        'next' => 'setNext'
     ];
 
     /**
@@ -135,12 +131,11 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'locale' => 'getLocale',
-        'country' => 'getCountry',
-        'app_id' => 'getAppId',
-        'date' => 'getDate',
-        'downloads' => 'getDownloads'
+        'total_items' => 'getTotalItems',
+        'page' => 'getPage',
+        'per_page' => 'getPerPage',
+        'total_pages' => 'getTotalPages',
+        'next' => 'getNext'
     ];
 
     /**
@@ -203,12 +198,11 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
-        $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
-        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
-        $this->container['downloads'] = isset($data['downloads']) ? $data['downloads'] : null;
+        $this->container['total_items'] = isset($data['total_items']) ? $data['total_items'] : null;
+        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        $this->container['per_page'] = isset($data['per_page']) ? $data['per_page'] : null;
+        $this->container['total_pages'] = isset($data['total_pages']) ? $data['total_pages'] : null;
+        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
     }
 
     /**
@@ -220,23 +214,17 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['total_items'] === null) {
+            $invalidProperties[] = "'total_items' can't be null";
         }
-        if ($this->container['locale'] === null) {
-            $invalidProperties[] = "'locale' can't be null";
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
         }
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
+        if ($this->container['per_page'] === null) {
+            $invalidProperties[] = "'per_page' can't be null";
         }
-        if ($this->container['app_id'] === null) {
-            $invalidProperties[] = "'app_id' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
-        if ($this->container['downloads'] === null) {
-            $invalidProperties[] = "'downloads' can't be null";
+        if ($this->container['total_pages'] === null) {
+            $invalidProperties[] = "'total_pages' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,22 +238,16 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
+        if ($this->container['total_items'] === null) {
             return false;
         }
-        if ($this->container['locale'] === null) {
+        if ($this->container['page'] === null) {
             return false;
         }
-        if ($this->container['country'] === null) {
+        if ($this->container['per_page'] === null) {
             return false;
         }
-        if ($this->container['app_id'] === null) {
-            return false;
-        }
-        if ($this->container['date'] === null) {
-            return false;
-        }
-        if ($this->container['downloads'] === null) {
+        if ($this->container['total_pages'] === null) {
             return false;
         }
         return true;
@@ -273,145 +255,121 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets total_items
      *
      * @return int
      */
-    public function getId()
+    public function getTotalItems()
     {
-        return $this->container['id'];
+        return $this->container['total_items'];
     }
 
     /**
-     * Sets id
+     * Sets total_items
      *
-     * @param int $id Download stats identifier
+     * @param int $total_items Total number of items
      *
      * @return $this
      */
-    public function setId($id)
+    public function setTotalItems($total_items)
     {
-        $this->container['id'] = $id;
+        $this->container['total_items'] = $total_items;
 
         return $this;
     }
 
     /**
-     * Gets locale
-     *
-     * @return string
-     */
-    public function getLocale()
-    {
-        return $this->container['locale'];
-    }
-
-    /**
-     * Sets locale
-     *
-     * @param string $locale Locale
-     *
-     * @return $this
-     */
-    public function setLocale($locale)
-    {
-        $this->container['locale'] = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string $country Country
-     *
-     * @return $this
-     */
-    public function setCountry($country)
-    {
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets app_id
-     *
-     * @return string
-     */
-    public function getAppId()
-    {
-        return $this->container['app_id'];
-    }
-
-    /**
-     * Sets app_id
-     *
-     * @param string $app_id App id
-     *
-     * @return $this
-     */
-    public function setAppId($app_id)
-    {
-        $this->container['app_id'] = $app_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date Date
-     *
-     * @return $this
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets downloads
+     * Gets page
      *
      * @return int
      */
-    public function getDownloads()
+    public function getPage()
     {
-        return $this->container['downloads'];
+        return $this->container['page'];
     }
 
     /**
-     * Sets downloads
+     * Sets page
      *
-     * @param int $downloads Number of downloads
+     * @param int $page Page
      *
      * @return $this
      */
-    public function setDownloads($downloads)
+    public function setPage($page)
     {
-        $this->container['downloads'] = $downloads;
+        $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets per_page
+     *
+     * @return int
+     */
+    public function getPerPage()
+    {
+        return $this->container['per_page'];
+    }
+
+    /**
+     * Sets per_page
+     *
+     * @param int $per_page Number of results per page
+     *
+     * @return $this
+     */
+    public function setPerPage($per_page)
+    {
+        $this->container['per_page'] = $per_page;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_pages
+     *
+     * @return int
+     */
+    public function getTotalPages()
+    {
+        return $this->container['total_pages'];
+    }
+
+    /**
+     * Sets total_pages
+     *
+     * @param int $total_pages Total number of pages
+     *
+     * @return $this
+     */
+    public function setTotalPages($total_pages)
+    {
+        $this->container['total_pages'] = $total_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets next
+     *
+     * @return string
+     */
+    public function getNext()
+    {
+        return $this->container['next'];
+    }
+
+    /**
+     * Sets next
+     *
+     * @param string $next Url of the next page
+     *
+     * @return $this
+     */
+    public function setNext($next)
+    {
+        $this->container['next'] = $next;
 
         return $this;
     }

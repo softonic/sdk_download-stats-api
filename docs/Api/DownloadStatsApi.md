@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **getDownloadStat**
-> getDownloadStat($id)
+> \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats getDownloadStat($id)
 
 Retrieves the given downloads statistics
 
@@ -28,7 +28,8 @@ $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
 $id = 56; // int | Download stats identifier
 
 try {
-    $apiInstance->getDownloadStat($id);
+    $result = $apiInstance->getDownloadStat($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DownloadStatsApi->getDownloadStat: ', $e->getMessage(), PHP_EOL;
 }
@@ -43,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats**](../Model/DownloadStats.md)
 
 ### Authorization
 
@@ -57,7 +58,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getDownloadStats**
-> getDownloadStats($accept_language, $app_id, $country, $date, $page, $per_page)
+> \Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel getDownloadStats($accept_language, $app_id, $country, $date, $page, $per_page)
 
 Get the list of the downloads statistics for a given app
 
@@ -79,7 +80,8 @@ $page = 1; // int | Page
 $per_page = 10; // int | Number of results per page
 
 try {
-    $apiInstance->getDownloadStats($accept_language, $app_id, $country, $date, $page, $per_page);
+    $result = $apiInstance->getDownloadStats($accept_language, $app_id, $country, $date, $page, $per_page);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DownloadStatsApi->getDownloadStats: ', $e->getMessage(), PHP_EOL;
 }
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel**](../Model/ItemsPaginationModel.md)
 
 ### Authorization
 
@@ -113,7 +115,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postDownloadStats**
-> postDownloadStats($accept_language, $download_stats)
+> postDownloadStats($accept_language, $download_stats_input)
 
 Creates the downloads statistics for a given app
 
@@ -128,10 +130,10 @@ $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
     new GuzzleHttp\Client()
 );
 $accept_language = "accept_language_example"; // string | Locale
-$download_stats = new \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats(); // \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats | 
+$download_stats_input = new \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput(); // \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput | 
 
 try {
-    $apiInstance->postDownloadStats($accept_language, $download_stats);
+    $apiInstance->postDownloadStats($accept_language, $download_stats_input);
 } catch (Exception $e) {
     echo 'Exception when calling DownloadStatsApi->postDownloadStats: ', $e->getMessage(), PHP_EOL;
 }
@@ -143,7 +145,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept_language** | **string**| Locale |
- **download_stats** | [**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats**](../Model/DownloadStats.md)|  | [optional]
+ **download_stats_input** | [**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput**](../Model/DownloadStatsInput.md)|  | [optional]
 
 ### Return type
 
@@ -161,7 +163,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **putDownloadStats**
-> putDownloadStats($id, $accept_language, $download_stats)
+> putDownloadStats($id, $accept_language, $download_stats_input)
 
 Replaces the given downloads statistics
 
@@ -177,10 +179,10 @@ $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
 );
 $id = 56; // int | Download stats identifier
 $accept_language = "accept_language_example"; // string | Locale
-$download_stats = new \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats(); // \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats | 
+$download_stats_input = new \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput(); // \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput | 
 
 try {
-    $apiInstance->putDownloadStats($id, $accept_language, $download_stats);
+    $apiInstance->putDownloadStats($id, $accept_language, $download_stats_input);
 } catch (Exception $e) {
     echo 'Exception when calling DownloadStatsApi->putDownloadStats: ', $e->getMessage(), PHP_EOL;
 }
@@ -193,7 +195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Download stats identifier |
  **accept_language** | **string**| Locale |
- **download_stats** | [**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStats**](../Model/DownloadStats.md)|  | [optional]
+ **download_stats_input** | [**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput**](../Model/DownloadStatsInput.md)|  | [optional]
 
 ### Return type
 
