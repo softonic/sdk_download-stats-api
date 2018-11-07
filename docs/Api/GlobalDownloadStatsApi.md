@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **getGlobalDownloadStats**
-> \Softonic\DownloadStatsApiSdk\Client\Model\GlobalDownloadStats getGlobalDownloadStats($id_program, $days_ago)
+> \Softonic\DownloadStatsApiSdk\Client\Model\GlobalDownloadStats getGlobalDownloadStats($id_program, $days_ago, $id_locale)
 
 Get the list of the downloads statistics for a given app summarized
 
@@ -24,9 +24,10 @@ $apiInstance = new Softonic\DownloadStatsApiSdk\Api\GlobalDownloadStatsApi(
 );
 $id_program = "id_program_example"; // string | Program identifier
 $days_ago = 8.14; // float | Take into account downloads from last given days
+$id_locale = "id_locale_example"; // string | Locale identifier
 
 try {
-    $result = $apiInstance->getGlobalDownloadStats($id_program, $days_ago);
+    $result = $apiInstance->getGlobalDownloadStats($id_program, $days_ago, $id_locale);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GlobalDownloadStatsApi->getGlobalDownloadStats: ', $e->getMessage(), PHP_EOL;
@@ -40,6 +41,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id_program** | **string**| Program identifier |
  **days_ago** | **float**| Take into account downloads from last given days | [optional]
+ **id_locale** | **string**| Locale identifier | [optional]
 
 ### Return type
 
