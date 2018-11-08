@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id_program** | **string** | Program identifier | 
+**id_platform** | **string** | Platform identifier | [optional] 
 **id_locale** | **string** | Locale identifier | [optional] 
 **downloads** | **int** | Number of downloads | 
 
