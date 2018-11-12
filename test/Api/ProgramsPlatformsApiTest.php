@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStatsApiTest
+ * ProgramsPlatformsApiTest
  * PHP version 5
  *
  * @category Class
@@ -33,14 +33,14 @@ use \Softonic\DownloadStatsApiSdk\ApiException;
 use \Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * DownloadStatsApiTest Class Doc Comment
+ * ProgramsPlatformsApiTest Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStatsApiTest extends \PHPUnit_Framework_TestCase
+class ProgramsPlatformsApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -72,42 +72,12 @@ class DownloadStatsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for getDownloadStat
+     * Test case for getProgramPlatform
      *
-     * Retrieves the given downloads statistics.
-     *
-     */
-    public function testGetDownloadStat()
-    {
-    }
-
-    /**
-     * Test case for getDownloadStats
-     *
-     * Get the list of the downloads statistics for a given app.
+     * Get the list of the downloads stats for a given program platform.
      *
      */
-    public function testGetDownloadStats()
-    {
-    }
-
-    /**
-     * Test case for postDownloadStats
-     *
-     * Creates the downloads statistics for a given app.
-     *
-     */
-    public function testPostDownloadStats()
-    {
-    }
-
-    /**
-     * Test case for putDownloadStats
-     *
-     * Replaces the given downloads statistics.
-     *
-     */
-    public function testPutDownloadStats()
+    public function testGetProgramPlatform()
     {
     }
 }
