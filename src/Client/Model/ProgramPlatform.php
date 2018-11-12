@@ -1,6 +1,6 @@
 <?php
 /**
- * DownloadStatsInput
+ * ProgramPlatform
  *
  * PHP version 5
  *
@@ -34,14 +34,14 @@ use \JsonSerializable;
 use \Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * DownloadStatsInput Class Doc Comment
+ * ProgramPlatform Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializable
+class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
       *
       * @var string
       */
-    protected static $swaggerModelName = 'DownloadStatsInput';
+    protected static $swaggerModelName = 'ProgramPlatform';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'app_id' => 'string',
-        'country' => 'string',
-        'date' => '\DateTime',
+        'id_program' => 'string',
+        'id_platform' => 'string',
         'downloads' => 'int'
     ];
 
@@ -70,9 +69,8 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'app_id' => null,
-        'country' => null,
-        'date' => 'date-time',
+        'id_program' => null,
+        'id_platform' => null,
         'downloads' => null
     ];
 
@@ -103,9 +101,8 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'app_id' => 'appId',
-        'country' => 'country',
-        'date' => 'date',
+        'id_program' => 'id_program',
+        'id_platform' => 'id_platform',
         'downloads' => 'downloads'
     ];
 
@@ -115,9 +112,8 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'app_id' => 'setAppId',
-        'country' => 'setCountry',
-        'date' => 'setDate',
+        'id_program' => 'setIdProgram',
+        'id_platform' => 'setIdPlatform',
         'downloads' => 'setDownloads'
     ];
 
@@ -127,9 +123,8 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'app_id' => 'getAppId',
-        'country' => 'getCountry',
-        'date' => 'getDate',
+        'id_program' => 'getIdProgram',
+        'id_platform' => 'getIdPlatform',
         'downloads' => 'getDownloads'
     ];
 
@@ -193,9 +188,8 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
-        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
+        $this->container['id_program'] = isset($data['id_program']) ? $data['id_program'] : null;
+        $this->container['id_platform'] = isset($data['id_platform']) ? $data['id_platform'] : null;
         $this->container['downloads'] = isset($data['downloads']) ? $data['downloads'] : null;
     }
 
@@ -208,14 +202,11 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['app_id'] === null) {
-            $invalidProperties[] = "'app_id' can't be null";
+        if ($this->container['id_program'] === null) {
+            $invalidProperties[] = "'id_program' can't be null";
         }
-        if ($this->container['country'] === null) {
-            $invalidProperties[] = "'country' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
+        if ($this->container['id_platform'] === null) {
+            $invalidProperties[] = "'id_platform' can't be null";
         }
         if ($this->container['downloads'] === null) {
             $invalidProperties[] = "'downloads' can't be null";
@@ -232,13 +223,10 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
     public function valid()
     {
 
-        if ($this->container['app_id'] === null) {
+        if ($this->container['id_program'] === null) {
             return false;
         }
-        if ($this->container['country'] === null) {
-            return false;
-        }
-        if ($this->container['date'] === null) {
+        if ($this->container['id_platform'] === null) {
             return false;
         }
         if ($this->container['downloads'] === null) {
@@ -249,73 +237,49 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
 
 
     /**
-     * Gets app_id
+     * Gets id_program
      *
      * @return string
      */
-    public function getAppId()
+    public function getIdProgram()
     {
-        return $this->container['app_id'];
+        return $this->container['id_program'];
     }
 
     /**
-     * Sets app_id
+     * Sets id_program
      *
-     * @param string $app_id App id
+     * @param string $id_program Program identifier
      *
      * @return $this
      */
-    public function setAppId($app_id)
+    public function setIdProgram($id_program)
     {
-        $this->container['app_id'] = $app_id;
+        $this->container['id_program'] = $id_program;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets id_platform
      *
      * @return string
      */
-    public function getCountry()
+    public function getIdPlatform()
     {
-        return $this->container['country'];
+        return $this->container['id_platform'];
     }
 
     /**
-     * Sets country
+     * Sets id_platform
      *
-     * @param string $country Country
+     * @param string $id_platform Platform identifier
      *
      * @return $this
      */
-    public function setCountry($country)
+    public function setIdPlatform($id_platform)
     {
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date Take into account downloads from that date. ISO 8601 format
-     *
-     * @return $this
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
+        $this->container['id_platform'] = $id_platform;
 
         return $this;
     }
