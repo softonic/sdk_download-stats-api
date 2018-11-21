@@ -204,6 +204,16 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
     }
 
     /**
+     * Returns true if all attributes are set. False otherwise.
+     *
+     * @return boolean
+     */
+    public function hasAllAttributesSet()
+    {
+        return count($this->container) === count(self::$attributeMap);
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -228,12 +238,37 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
     }
 
     /**
-     * Validate all the properties in the model
+     * Validate all the properties in the model ensuring the required ones are set
      * return true if all passed
      *
      * @return bool True if all properties are valid
      */
     public function valid()
+    {
+
+        if ($this->offsetGet('app_id') === null) {
+            return false;
+        }
+        if ($this->offsetGet('country') === null) {
+            return false;
+        }
+        if ($this->offsetGet('date') === null) {
+            return false;
+        }
+        if ($this->offsetGet('downloads') === null) {
+            return false;
+        }
+
+        return $this->validProperties();
+    }
+
+    /**
+     * Validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properties are valid
+     */
+    public function validProperties()
     {
 
         if (array_key_exists('app_id', $this->container) && $this->container['app_id'] === null) {

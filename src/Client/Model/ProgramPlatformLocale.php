@@ -263,6 +263,16 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     }
 
     /**
+     * Returns true if all attributes are set. False otherwise.
+     *
+     * @return boolean
+     */
+    public function hasAllAttributesSet()
+    {
+        return count($this->container) === count(self::$attributeMap);
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -281,7 +291,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
             $invalidProperties[] = "'id_locale' can't be null";
         }
         $allowedValues = $this->getIdLocaleAllowableValues();
-        if (array_key_exists('id_locale', $this->container) && !in_array($this->container['id_locale'], $allowedValues)) {
+        if (!in_array($this->container['id_locale'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'id_locale', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -295,12 +305,37 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     }
 
     /**
-     * Validate all the properties in the model
+     * Validate all the properties in the model ensuring the required ones are set
      * return true if all passed
      *
      * @return bool True if all properties are valid
      */
     public function valid()
+    {
+
+        if ($this->offsetGet('id_program') === null) {
+            return false;
+        }
+        if ($this->offsetGet('id_platform') === null) {
+            return false;
+        }
+        if ($this->offsetGet('id_locale') === null) {
+            return false;
+        }
+        if ($this->offsetGet('downloads') === null) {
+            return false;
+        }
+
+        return $this->validProperties();
+    }
+
+    /**
+     * Validate all the properties in the model
+     * return true if all passed
+     *
+     * @return bool True if all properties are valid
+     */
+    public function validProperties()
     {
 
         if (array_key_exists('id_program', $this->container) && $this->container['id_program'] === null) {
