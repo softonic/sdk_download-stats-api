@@ -263,6 +263,16 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     }
 
     /**
+     * Returns true if all attributes are set. False otherwise.
+     *
+     * @return bool
+     */
+    public function hasAllAttributesSet()
+    {
+        return count($this->container) === count(self::$attributeMap);
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -271,27 +281,52 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     {
         $invalidProperties = [];
 
-        if (array_key_exists('id_program', $this->container) && $this->container['id_program'] === null) {
+        if ($this->container['id_program'] === null) {
             $invalidProperties[] = "'id_program' can't be null";
         }
-        if (array_key_exists('id_platform', $this->container) && $this->container['id_platform'] === null) {
+        if ($this->container['id_platform'] === null) {
             $invalidProperties[] = "'id_platform' can't be null";
         }
-        if (array_key_exists('id_locale', $this->container) && $this->container['id_locale'] === null) {
+        if ($this->container['id_locale'] === null) {
             $invalidProperties[] = "'id_locale' can't be null";
         }
         $allowedValues = $this->getIdLocaleAllowableValues();
-        if (array_key_exists('id_locale', $this->container) && !in_array($this->container['id_locale'], $allowedValues)) {
+        if (!in_array($this->container['id_locale'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'id_locale', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
 
-        if (array_key_exists('downloads', $this->container) && $this->container['downloads'] === null) {
+        if ($this->container['downloads'] === null) {
             $invalidProperties[] = "'downloads' can't be null";
         }
         return $invalidProperties;
+    }
+
+    /**
+     * Validate all the properties in the model ensuring the required ones are set
+     * return true if all passed
+     *
+     * @return bool True if all properties are valid
+     */
+    public function valid()
+    {
+
+        if ($this->offsetGet('id_program') === null) {
+            return false;
+        }
+        if ($this->offsetGet('id_platform') === null) {
+            return false;
+        }
+        if ($this->offsetGet('id_locale') === null) {
+            return false;
+        }
+        if ($this->offsetGet('downloads') === null) {
+            return false;
+        }
+
+        return $this->validProperties();
     }
 
     /**
@@ -300,7 +335,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function validProperties()
     {
 
         if (array_key_exists('id_program', $this->container) && $this->container['id_program'] === null) {
@@ -330,7 +365,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     public function getIdProgram()
     {
-        return $this->container['id_program'];
+        return array_key_exists('id_program', $this->container) ? $this->container['id_program'] : null;
     }
 
     /**
@@ -354,7 +389,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     public function getIdPlatform()
     {
-        return $this->container['id_platform'];
+        return array_key_exists('id_platform', $this->container) ? $this->container['id_platform'] : null;
     }
 
     /**
@@ -378,7 +413,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     public function getIdLocale()
     {
-        return $this->container['id_locale'];
+        return array_key_exists('id_locale', $this->container) ? $this->container['id_locale'] : null;
     }
 
     /**
@@ -411,7 +446,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     public function getDownloads()
     {
-        return $this->container['downloads'];
+        return array_key_exists('downloads', $this->container) ? $this->container['downloads'] : null;
     }
 
     /**
@@ -432,7 +467,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -448,7 +483,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -461,7 +496,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     public function offsetSet($offset, $value)
     {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -514,15 +549,17 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['id_program'] = $this->getIdProgram();
+        $data['id_platform'] = $this->getIdPlatform();
+        $data['id_locale'] = $this->getIdLocale();
+        $data['downloads'] = $this->getDownloads();
 
         return $data;
     }

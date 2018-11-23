@@ -198,6 +198,16 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
+     * Returns true if all attributes are set. False otherwise.
+     *
+     * @return bool
+     */
+    public function hasAllAttributesSet()
+    {
+        return count($this->container) === count(self::$attributeMap);
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -206,16 +216,38 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if (array_key_exists('id_program', $this->container) && $this->container['id_program'] === null) {
+        if ($this->container['id_program'] === null) {
             $invalidProperties[] = "'id_program' can't be null";
         }
-        if (array_key_exists('id_platform', $this->container) && $this->container['id_platform'] === null) {
+        if ($this->container['id_platform'] === null) {
             $invalidProperties[] = "'id_platform' can't be null";
         }
-        if (array_key_exists('downloads', $this->container) && $this->container['downloads'] === null) {
+        if ($this->container['downloads'] === null) {
             $invalidProperties[] = "'downloads' can't be null";
         }
         return $invalidProperties;
+    }
+
+    /**
+     * Validate all the properties in the model ensuring the required ones are set
+     * return true if all passed
+     *
+     * @return bool True if all properties are valid
+     */
+    public function valid()
+    {
+
+        if ($this->offsetGet('id_program') === null) {
+            return false;
+        }
+        if ($this->offsetGet('id_platform') === null) {
+            return false;
+        }
+        if ($this->offsetGet('downloads') === null) {
+            return false;
+        }
+
+        return $this->validProperties();
     }
 
     /**
@@ -224,7 +256,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function validProperties()
     {
 
         if (array_key_exists('id_program', $this->container) && $this->container['id_program'] === null) {
@@ -247,7 +279,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getIdProgram()
     {
-        return $this->container['id_program'];
+        return array_key_exists('id_program', $this->container) ? $this->container['id_program'] : null;
     }
 
     /**
@@ -271,7 +303,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getIdPlatform()
     {
-        return $this->container['id_platform'];
+        return array_key_exists('id_platform', $this->container) ? $this->container['id_platform'] : null;
     }
 
     /**
@@ -295,7 +327,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getDownloads()
     {
-        return $this->container['downloads'];
+        return array_key_exists('downloads', $this->container) ? $this->container['downloads'] : null;
     }
 
     /**
@@ -316,7 +348,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -332,7 +364,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -345,7 +377,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function offsetSet($offset, $value)
     {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -398,15 +430,16 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['id_program'] = $this->getIdProgram();
+        $data['id_platform'] = $this->getIdPlatform();
+        $data['downloads'] = $this->getDownloads();
 
         return $data;
     }

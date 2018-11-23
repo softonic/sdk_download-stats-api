@@ -210,6 +210,16 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
     }
 
     /**
+     * Returns true if all attributes are set. False otherwise.
+     *
+     * @return bool
+     */
+    public function hasAllAttributesSet()
+    {
+        return count($this->container) === count(self::$attributeMap);
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -218,19 +228,44 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if (array_key_exists('total_items', $this->container) && $this->container['total_items'] === null) {
+        if ($this->container['total_items'] === null) {
             $invalidProperties[] = "'total_items' can't be null";
         }
-        if (array_key_exists('page', $this->container) && $this->container['page'] === null) {
+        if ($this->container['page'] === null) {
             $invalidProperties[] = "'page' can't be null";
         }
-        if (array_key_exists('per_page', $this->container) && $this->container['per_page'] === null) {
+        if ($this->container['per_page'] === null) {
             $invalidProperties[] = "'per_page' can't be null";
         }
-        if (array_key_exists('total_pages', $this->container) && $this->container['total_pages'] === null) {
+        if ($this->container['total_pages'] === null) {
             $invalidProperties[] = "'total_pages' can't be null";
         }
         return $invalidProperties;
+    }
+
+    /**
+     * Validate all the properties in the model ensuring the required ones are set
+     * return true if all passed
+     *
+     * @return bool True if all properties are valid
+     */
+    public function valid()
+    {
+
+        if ($this->offsetGet('total_items') === null) {
+            return false;
+        }
+        if ($this->offsetGet('page') === null) {
+            return false;
+        }
+        if ($this->offsetGet('per_page') === null) {
+            return false;
+        }
+        if ($this->offsetGet('total_pages') === null) {
+            return false;
+        }
+
+        return $this->validProperties();
     }
 
     /**
@@ -239,7 +274,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function validProperties()
     {
 
         if (array_key_exists('total_items', $this->container) && $this->container['total_items'] === null) {
@@ -265,7 +300,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getTotalItems()
     {
-        return $this->container['total_items'];
+        return array_key_exists('total_items', $this->container) ? $this->container['total_items'] : null;
     }
 
     /**
@@ -289,7 +324,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getPage()
     {
-        return $this->container['page'];
+        return array_key_exists('page', $this->container) ? $this->container['page'] : null;
     }
 
     /**
@@ -313,7 +348,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getPerPage()
     {
-        return $this->container['per_page'];
+        return array_key_exists('per_page', $this->container) ? $this->container['per_page'] : null;
     }
 
     /**
@@ -337,7 +372,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getTotalPages()
     {
-        return $this->container['total_pages'];
+        return array_key_exists('total_pages', $this->container) ? $this->container['total_pages'] : null;
     }
 
     /**
@@ -361,7 +396,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getNext()
     {
-        return $this->container['next'];
+        return array_key_exists('next', $this->container) ? $this->container['next'] : null;
     }
 
     /**
@@ -382,7 +417,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -398,7 +433,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -411,7 +446,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function offsetSet($offset, $value)
     {
-        if (is_null($offset)) {
+        if (null === $offset) {
             $this->container[] = $value;
         } else {
             $this->container[$offset] = $value;
@@ -464,15 +499,18 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['total_items'] = $this->getTotalItems();
+        $data['page'] = $this->getPage();
+        $data['per_page'] = $this->getPerPage();
+        $data['total_pages'] = $this->getTotalPages();
+        $data['next'] = $this->getNext();
 
         return $data;
     }
