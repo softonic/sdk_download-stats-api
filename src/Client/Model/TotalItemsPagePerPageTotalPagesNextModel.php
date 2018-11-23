@@ -210,16 +210,6 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
     }
 
     /**
-     * Returns true if all attributes are set. False otherwise.
-     *
-     * @return boolean
-     */
-    public function hasAllAttributesSet()
-    {
-        return count($this->container) === count(self::$attributeMap);
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -244,37 +234,12 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
     }
 
     /**
-     * Validate all the properties in the model ensuring the required ones are set
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-
-        if ($this->offsetGet('total_items') === null) {
-            return false;
-        }
-        if ($this->offsetGet('page') === null) {
-            return false;
-        }
-        if ($this->offsetGet('per_page') === null) {
-            return false;
-        }
-        if ($this->offsetGet('total_pages') === null) {
-            return false;
-        }
-
-        return $this->validProperties();
-    }
-
-    /**
      * Validate all the properties in the model
      * return true if all passed
      *
      * @return bool True if all properties are valid
      */
-    public function validProperties()
+    public function valid()
     {
 
         if (array_key_exists('total_items', $this->container) && $this->container['total_items'] === null) {
@@ -300,7 +265,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getTotalItems()
     {
-        return array_key_exists('total_items', $this->container) ? $this->container['total_items'] : null;
+        return $this->container['total_items'];
     }
 
     /**
@@ -324,7 +289,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getPage()
     {
-        return array_key_exists('page', $this->container) ? $this->container['page'] : null;
+        return $this->container['page'];
     }
 
     /**
@@ -348,7 +313,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getPerPage()
     {
-        return array_key_exists('per_page', $this->container) ? $this->container['per_page'] : null;
+        return $this->container['per_page'];
     }
 
     /**
@@ -372,7 +337,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getTotalPages()
     {
-        return array_key_exists('total_pages', $this->container) ? $this->container['total_pages'] : null;
+        return $this->container['total_pages'];
     }
 
     /**
@@ -396,7 +361,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getNext()
     {
-        return array_key_exists('next', $this->container) ? $this->container['next'] : null;
+        return $this->container['next'];
     }
 
     /**
@@ -499,18 +464,15 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        $data = [];
-        $data['total_items'] = $this->getTotalItems();
-        $data['page'] = $this->getPage();
-        $data['per_page'] = $this->getPerPage();
-        $data['total_pages'] = $this->getTotalPages();
-        $data['next'] = $this->getNext();
+        foreach (self::$attributeMap as $attribute) {
+            $data[$attribute] = $this->container[$attribute] ?? null;
+        }
 
         return $data;
     }

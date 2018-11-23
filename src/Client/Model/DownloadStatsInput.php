@@ -204,16 +204,6 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
     }
 
     /**
-     * Returns true if all attributes are set. False otherwise.
-     *
-     * @return boolean
-     */
-    public function hasAllAttributesSet()
-    {
-        return count($this->container) === count(self::$attributeMap);
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -238,37 +228,12 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
     }
 
     /**
-     * Validate all the properties in the model ensuring the required ones are set
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-
-        if ($this->offsetGet('app_id') === null) {
-            return false;
-        }
-        if ($this->offsetGet('country') === null) {
-            return false;
-        }
-        if ($this->offsetGet('date') === null) {
-            return false;
-        }
-        if ($this->offsetGet('downloads') === null) {
-            return false;
-        }
-
-        return $this->validProperties();
-    }
-
-    /**
      * Validate all the properties in the model
      * return true if all passed
      *
      * @return bool True if all properties are valid
      */
-    public function validProperties()
+    public function valid()
     {
 
         if (array_key_exists('app_id', $this->container) && $this->container['app_id'] === null) {
@@ -294,7 +259,7 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     public function getAppId()
     {
-        return array_key_exists('app_id', $this->container) ? $this->container['app_id'] : null;
+        return $this->container['app_id'];
     }
 
     /**
@@ -318,7 +283,7 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     public function getCountry()
     {
-        return array_key_exists('country', $this->container) ? $this->container['country'] : null;
+        return $this->container['country'];
     }
 
     /**
@@ -342,7 +307,7 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     public function getDate()
     {
-        return array_key_exists('date', $this->container) ? $this->container['date'] : null;
+        return $this->container['date'];
     }
 
     /**
@@ -366,7 +331,7 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     public function getDownloads()
     {
-        return array_key_exists('downloads', $this->container) ? $this->container['downloads'] : null;
+        return $this->container['downloads'];
     }
 
     /**
@@ -469,17 +434,15 @@ class DownloadStatsInput implements ModelInterface, ArrayAccess, JsonSerializabl
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        $data = [];
-        $data['app_id'] = $this->getAppId();
-        $data['country'] = $this->getCountry();
-        $data['date'] = $this->getDate();
-        $data['downloads'] = $this->getDownloads();
+        foreach (self::$attributeMap as $attribute) {
+            $data[$attribute] = $this->container[$attribute] ?? null;
+        }
 
         return $data;
     }

@@ -35,7 +35,6 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Softonic\DownloadStatsApiSdk\ApiException;
-use Softonic\DownloadStatsApiSdk\Client\Model\ModelInterface;
 use Softonic\DownloadStatsApiSdk\Configuration;
 use Softonic\DownloadStatsApiSdk\HeaderSelector;
 use Softonic\DownloadStatsApiSdk\ObjectSerializer;

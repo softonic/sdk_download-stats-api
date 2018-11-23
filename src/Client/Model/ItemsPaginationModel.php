@@ -192,16 +192,6 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
     }
 
     /**
-     * Returns true if all attributes are set. False otherwise.
-     *
-     * @return boolean
-     */
-    public function hasAllAttributesSet()
-    {
-        return count($this->container) === count(self::$attributeMap);
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -214,25 +204,12 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
     }
 
     /**
-     * Validate all the properties in the model ensuring the required ones are set
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-
-
-        return $this->validProperties();
-    }
-
-    /**
      * Validate all the properties in the model
      * return true if all passed
      *
      * @return bool True if all properties are valid
      */
-    public function validProperties()
+    public function valid()
     {
 
         return true;
@@ -246,7 +223,7 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
      */
     public function getItems()
     {
-        return array_key_exists('items', $this->container) ? $this->container['items'] : null;
+        return $this->container['items'];
     }
 
     /**
@@ -270,7 +247,7 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
      */
     public function getPagination()
     {
-        return array_key_exists('pagination', $this->container) ? $this->container['pagination'] : null;
+        return $this->container['pagination'];
     }
 
     /**
@@ -373,15 +350,15 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        $data = [];
-        $data['items'] = $this->getItems();
-        $data['pagination'] = $this->getPagination();
+        foreach (self::$attributeMap as $attribute) {
+            $data[$attribute] = $this->container[$attribute] ?? null;
+        }
 
         return $data;
     }
