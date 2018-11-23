@@ -279,7 +279,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getIdProgram()
     {
-        return $this->container['id_program'];
+        return array_key_exists('id_program', $this->container) ? $this->container['id_program'] : null;
     }
 
     /**
@@ -303,7 +303,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getIdPlatform()
     {
-        return $this->container['id_platform'];
+        return array_key_exists('id_platform', $this->container) ? $this->container['id_platform'] : null;
     }
 
     /**
@@ -327,7 +327,7 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getDownloads()
     {
-        return $this->container['downloads'];
+        return array_key_exists('downloads', $this->container) ? $this->container['downloads'] : null;
     }
 
     /**
@@ -430,15 +430,16 @@ class ProgramPlatform implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['id_program'] = $this->getIdProgram();
+        $data['id_platform'] = $this->getIdPlatform();
+        $data['downloads'] = $this->getDownloads();
 
         return $data;
     }

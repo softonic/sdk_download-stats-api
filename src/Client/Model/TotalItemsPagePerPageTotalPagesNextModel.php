@@ -300,7 +300,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getTotalItems()
     {
-        return $this->container['total_items'];
+        return array_key_exists('total_items', $this->container) ? $this->container['total_items'] : null;
     }
 
     /**
@@ -324,7 +324,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getPage()
     {
-        return $this->container['page'];
+        return array_key_exists('page', $this->container) ? $this->container['page'] : null;
     }
 
     /**
@@ -348,7 +348,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getPerPage()
     {
-        return $this->container['per_page'];
+        return array_key_exists('per_page', $this->container) ? $this->container['per_page'] : null;
     }
 
     /**
@@ -372,7 +372,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getTotalPages()
     {
-        return $this->container['total_pages'];
+        return array_key_exists('total_pages', $this->container) ? $this->container['total_pages'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      */
     public function getNext()
     {
-        return $this->container['next'];
+        return array_key_exists('next', $this->container) ? $this->container['next'] : null;
     }
 
     /**
@@ -499,15 +499,18 @@ class TotalItemsPagePerPageTotalPagesNextModel implements ModelInterface, ArrayA
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['total_items'] = $this->getTotalItems();
+        $data['page'] = $this->getPage();
+        $data['per_page'] = $this->getPerPage();
+        $data['total_pages'] = $this->getTotalPages();
+        $data['next'] = $this->getNext();
 
         return $data;
     }

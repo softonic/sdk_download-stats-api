@@ -324,7 +324,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getId()
     {
-        return $this->container['id'];
+        return array_key_exists('id', $this->container) ? $this->container['id'] : null;
     }
 
     /**
@@ -348,7 +348,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getLocale()
     {
-        return $this->container['locale'];
+        return array_key_exists('locale', $this->container) ? $this->container['locale'] : null;
     }
 
     /**
@@ -372,7 +372,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getCountry()
     {
-        return $this->container['country'];
+        return array_key_exists('country', $this->container) ? $this->container['country'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getAppId()
     {
-        return $this->container['app_id'];
+        return array_key_exists('app_id', $this->container) ? $this->container['app_id'] : null;
     }
 
     /**
@@ -420,7 +420,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getDate()
     {
-        return $this->container['date'];
+        return array_key_exists('date', $this->container) ? $this->container['date'] : null;
     }
 
     /**
@@ -444,7 +444,7 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function getDownloads()
     {
-        return $this->container['downloads'];
+        return array_key_exists('downloads', $this->container) ? $this->container['downloads'] : null;
     }
 
     /**
@@ -547,15 +547,19 @@ class DownloadStats implements ModelInterface, ArrayAccess, JsonSerializable
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['id'] = $this->getId();
+        $data['locale'] = $this->getLocale();
+        $data['country'] = $this->getCountry();
+        $data['app_id'] = $this->getAppId();
+        $data['date'] = $this->getDate();
+        $data['downloads'] = $this->getDownloads();
 
         return $data;
     }

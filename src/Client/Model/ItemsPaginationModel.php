@@ -246,7 +246,7 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
      */
     public function getItems()
     {
-        return $this->container['items'];
+        return array_key_exists('items', $this->container) ? $this->container['items'] : null;
     }
 
     /**
@@ -270,7 +270,7 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
      */
     public function getPagination()
     {
-        return $this->container['pagination'];
+        return array_key_exists('pagination', $this->container) ? $this->container['pagination'] : null;
     }
 
     /**
@@ -373,15 +373,15 @@ class ItemsPaginationModel implements ModelInterface, ArrayAccess, JsonSerializa
      *
      * @return array
      */
-    public function toArray($getAllAttributes = self::GET_ALL_ATTRIBUTES)
+    public function toArray($getAllAttributes = self::GET_SET_ATTRIBUTES)
     {
         if (!$getAllAttributes) {
             return $this->container;
         }
 
-        foreach (self::$attributeMap as $attribute) {
-            $data[$attribute] = $this->container[$attribute] ?? null;
-        }
+        $data = [];
+        $data['items'] = $this->getItems();
+        $data['pagination'] = $this->getPagination();
 
         return $data;
     }
