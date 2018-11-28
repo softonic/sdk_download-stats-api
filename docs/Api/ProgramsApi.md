@@ -22,9 +22,9 @@ $apiInstance = new Softonic\DownloadStatsApiSdk\Api\ProgramsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$days_ago = 8.14; // float | Take into account downloads from last given days
-$min_downloads = 8.14; // float | Take into account programs with at least the given downloads
-$max_downloads = 8.14; // float | Take into account programs with not more than the given downloads
+$days_ago = 56; // int | Take into account downloads from last given days
+$min_downloads = 56; // int | Take into account programs with at least the given downloads
+$max_downloads = 56; // int | Take into account programs with not more than the given downloads
 $page = 1; // int | Page
 $per_page = 10; // int | Number of results per page
 
@@ -41,9 +41,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **days_ago** | **float**| Take into account downloads from last given days | [optional]
- **min_downloads** | **float**| Take into account programs with at least the given downloads | [optional]
- **max_downloads** | **float**| Take into account programs with not more than the given downloads | [optional]
+ **days_ago** | **int**| Take into account downloads from last given days | [optional]
+ **min_downloads** | **int**| Take into account programs with at least the given downloads | [optional]
+ **max_downloads** | **int**| Take into account programs with not more than the given downloads | [optional]
  **page** | **int**| Page | [optional] [default to 1]
  **per_page** | **int**| Number of results per page | [optional] [default to 10]
 
