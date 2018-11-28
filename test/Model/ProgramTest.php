@@ -1,6 +1,6 @@
 <?php
 /**
- * TotalItemsPagePerPageTotalPagesNextModelTest
+ * ProgramTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Softonic\DownloadStatsApiSdk;
 
 /**
- * TotalItemsPagePerPageTotalPagesNextModelTest Class Doc Comment
+ * ProgramTest Class Doc Comment
  *
  * @category    Class */
-// * @description TotalItemsPagePerPageTotalPagesNextModel
+// * @description Program
 /**
  * @package     Softonic\DownloadStatsApiSdk
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TotalItemsPagePerPageTotalPagesNextModelTest extends \PHPUnit_Framework_TestCase
+class ProgramTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,44 +71,23 @@ class TotalItemsPagePerPageTotalPagesNextModelTest extends \PHPUnit_Framework_Te
     }
 
     /**
-     * Test "TotalItemsPagePerPageTotalPagesNextModel"
+     * Test "Program"
      */
-    public function testTotalItemsPagePerPageTotalPagesNextModel()
+    public function testProgram()
     {
     }
 
     /**
-     * Test attribute "total_items"
+     * Test attribute "id_program"
      */
-    public function testPropertyTotalItems()
+    public function testPropertyIdProgram()
     {
     }
 
     /**
-     * Test attribute "page"
+     * Test attribute "downloads"
      */
-    public function testPropertyPage()
-    {
-    }
-
-    /**
-     * Test attribute "per_page"
-     */
-    public function testPropertyPerPage()
-    {
-    }
-
-    /**
-     * Test attribute "total_pages"
-     */
-    public function testPropertyTotalPages()
-    {
-    }
-
-    /**
-     * Test attribute "next"
-     */
-    public function testPropertyNext()
+    public function testPropertyDownloads()
     {
     }
 }

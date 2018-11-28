@@ -1,6 +1,6 @@
 <?php
 /**
- * TotalItemsPagePerPageTotalPagesNextModelTest
+ * ItemsPaginationModel2Test
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace Softonic\DownloadStatsApiSdk;
 
 /**
- * TotalItemsPagePerPageTotalPagesNextModelTest Class Doc Comment
+ * ItemsPaginationModel2Test Class Doc Comment
  *
  * @category    Class */
-// * @description TotalItemsPagePerPageTotalPagesNextModel
+// * @description ItemsPaginationModel2
 /**
  * @package     Softonic\DownloadStatsApiSdk
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TotalItemsPagePerPageTotalPagesNextModelTest extends \PHPUnit_Framework_TestCase
+class ItemsPaginationModel2Test extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,44 +71,23 @@ class TotalItemsPagePerPageTotalPagesNextModelTest extends \PHPUnit_Framework_Te
     }
 
     /**
-     * Test "TotalItemsPagePerPageTotalPagesNextModel"
+     * Test "ItemsPaginationModel2"
      */
-    public function testTotalItemsPagePerPageTotalPagesNextModel()
+    public function testItemsPaginationModel2()
     {
     }
 
     /**
-     * Test attribute "total_items"
+     * Test attribute "items"
      */
-    public function testPropertyTotalItems()
+    public function testPropertyItems()
     {
     }
 
     /**
-     * Test attribute "page"
+     * Test attribute "pagination"
      */
-    public function testPropertyPage()
-    {
-    }
-
-    /**
-     * Test attribute "per_page"
-     */
-    public function testPropertyPerPage()
-    {
-    }
-
-    /**
-     * Test attribute "total_pages"
-     */
-    public function testPropertyTotalPages()
-    {
-    }
-
-    /**
-     * Test attribute "next"
-     */
-    public function testPropertyNext()
+    public function testPropertyPagination()
     {
     }
 }

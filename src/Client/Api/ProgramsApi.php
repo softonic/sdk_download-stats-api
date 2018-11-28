@@ -1,6 +1,6 @@
 <?php
 /**
- * ProgramsPlatformsLocalesApi
+ * ProgramsApi
  * PHP version 5
  *
  * @category Class
@@ -41,14 +41,14 @@ use Softonic\DownloadStatsApiSdk\HeaderSelector;
 use Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * ProgramsPlatformsLocalesApi Class Doc Comment
+ * ProgramsApi Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ProgramsPlatformsLocalesApi
+class ProgramsApi
 {
     /**
      * @var ClientInterface
@@ -84,43 +84,45 @@ class ProgramsPlatformsLocalesApi
     }
 
     /**
-     * Operation getProgramPlatformLocale
+     * Operation findProgram
      *
-     * Get the list of the downloads stats for a given program platform locale
+     * Get the list of the downloads stats ordered by downloads
      *
-     * @param  string $id_program Program identifier (required)
-     * @param  string $id_platform Platform identifier (required)
-     * @param  string $id_locale Locale identifier (required)
      * @param  float $days_ago Take into account downloads from last given days (optional)
+     * @param  float $min_downloads Take into account programs with at least the given downloads (optional)
+     * @param  float $max_downloads Take into account programs with not more than the given downloads (optional)
+     * @param  int $page Page (optional, default to 1)
+     * @param  int $per_page Number of results per page (optional, default to 10)
      *
      * @throws \Softonic\DownloadStatsApiSdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLocale
+     * @return \Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel2
      */
-    public function getProgramPlatformLocale($id_program, $id_platform, $id_locale, $days_ago = null)
+    public function findProgram($days_ago = null, $min_downloads = null, $max_downloads = null, $page = '1', $per_page = '10')
     {
-        list($response) = $this->getProgramPlatformLocaleWithHttpInfo($id_program, $id_platform, $id_locale, $days_ago);
+        list($response) = $this->findProgramWithHttpInfo($days_ago, $min_downloads, $max_downloads, $page, $per_page);
         return $response;
     }
 
     /**
-     * Operation getProgramPlatformLocaleWithHttpInfo
+     * Operation findProgramWithHttpInfo
      *
-     * Get the list of the downloads stats for a given program platform locale
+     * Get the list of the downloads stats ordered by downloads
      *
-     * @param  string $id_program Program identifier (required)
-     * @param  string $id_platform Platform identifier (required)
-     * @param  string $id_locale Locale identifier (required)
      * @param  float $days_ago Take into account downloads from last given days (optional)
+     * @param  float $min_downloads Take into account programs with at least the given downloads (optional)
+     * @param  float $max_downloads Take into account programs with not more than the given downloads (optional)
+     * @param  int $page Page (optional, default to 1)
+     * @param  int $per_page Number of results per page (optional, default to 10)
      *
      * @throws \Softonic\DownloadStatsApiSdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLocale, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProgramPlatformLocaleWithHttpInfo($id_program, $id_platform, $id_locale, $days_ago = null)
+    public function findProgramWithHttpInfo($days_ago = null, $min_downloads = null, $max_downloads = null, $page = '1', $per_page = '10')
     {
-        $returnType = '\Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLocale';
-        $request = $this->getProgramPlatformLocaleRequest($id_program, $id_platform, $id_locale, $days_ago);
+        $returnType = '\Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel2';
+        $request = $this->findProgramRequest($days_ago, $min_downloads, $max_downloads, $page, $per_page);
 
         try {
             $options = $this->createHttpClientOption();
@@ -171,7 +173,7 @@ class ProgramsPlatformsLocalesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLocale',
+                        '\Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,21 +184,22 @@ class ProgramsPlatformsLocalesApi
     }
 
     /**
-     * Operation getProgramPlatformLocaleAsync
+     * Operation findProgramAsync
      *
-     * Get the list of the downloads stats for a given program platform locale
+     * Get the list of the downloads stats ordered by downloads
      *
-     * @param  string $id_program Program identifier (required)
-     * @param  string $id_platform Platform identifier (required)
-     * @param  string $id_locale Locale identifier (required)
      * @param  float $days_ago Take into account downloads from last given days (optional)
+     * @param  float $min_downloads Take into account programs with at least the given downloads (optional)
+     * @param  float $max_downloads Take into account programs with not more than the given downloads (optional)
+     * @param  int $page Page (optional, default to 1)
+     * @param  int $per_page Number of results per page (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProgramPlatformLocaleAsync($id_program, $id_platform, $id_locale, $days_ago = null)
+    public function findProgramAsync($days_ago = null, $min_downloads = null, $max_downloads = null, $page = '1', $per_page = '10')
     {
-        return $this->getProgramPlatformLocaleAsyncWithHttpInfo($id_program, $id_platform, $id_locale, $days_ago)
+        return $this->findProgramAsyncWithHttpInfo($days_ago, $min_downloads, $max_downloads, $page, $per_page)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -205,22 +208,23 @@ class ProgramsPlatformsLocalesApi
     }
 
     /**
-     * Operation getProgramPlatformLocaleAsyncWithHttpInfo
+     * Operation findProgramAsyncWithHttpInfo
      *
-     * Get the list of the downloads stats for a given program platform locale
+     * Get the list of the downloads stats ordered by downloads
      *
-     * @param  string $id_program Program identifier (required)
-     * @param  string $id_platform Platform identifier (required)
-     * @param  string $id_locale Locale identifier (required)
      * @param  float $days_ago Take into account downloads from last given days (optional)
+     * @param  float $min_downloads Take into account programs with at least the given downloads (optional)
+     * @param  float $max_downloads Take into account programs with not more than the given downloads (optional)
+     * @param  int $page Page (optional, default to 1)
+     * @param  int $per_page Number of results per page (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProgramPlatformLocaleAsyncWithHttpInfo($id_program, $id_platform, $id_locale, $days_ago = null)
+    public function findProgramAsyncWithHttpInfo($days_ago = null, $min_downloads = null, $max_downloads = null, $page = '1', $per_page = '10')
     {
-        $returnType = '\Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLocale';
-        $request = $this->getProgramPlatformLocaleRequest($id_program, $id_platform, $id_locale, $days_ago);
+        $returnType = '\Softonic\DownloadStatsApiSdk\Client\Model\ItemsPaginationModel2';
+        $request = $this->findProgramRequest($days_ago, $min_downloads, $max_downloads, $page, $per_page);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -260,38 +264,32 @@ class ProgramsPlatformsLocalesApi
     }
 
     /**
-     * Create request for operation 'getProgramPlatformLocale'
+     * Create request for operation 'findProgram'
      *
-     * @param  string $id_program Program identifier (required)
-     * @param  string $id_platform Platform identifier (required)
-     * @param  string $id_locale Locale identifier (required)
      * @param  float $days_ago Take into account downloads from last given days (optional)
+     * @param  float $min_downloads Take into account programs with at least the given downloads (optional)
+     * @param  float $max_downloads Take into account programs with not more than the given downloads (optional)
+     * @param  int $page Page (optional, default to 1)
+     * @param  int $per_page Number of results per page (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getProgramPlatformLocaleRequest($id_program, $id_platform, $id_locale, $days_ago = null)
+    protected function findProgramRequest($days_ago = null, $min_downloads = null, $max_downloads = null, $page = '1', $per_page = '10')
     {
-        // verify the required parameter 'id_program' is set
-        if ($id_program === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_program when calling getProgramPlatformLocale'
-            );
-        }
-        // verify the required parameter 'id_platform' is set
-        if ($id_platform === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_platform when calling getProgramPlatformLocale'
-            );
-        }
-        // verify the required parameter 'id_locale' is set
-        if ($id_locale === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_locale when calling getProgramPlatformLocale'
-            );
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling ProgramsApi.findProgram, must be bigger than or equal to 1.');
         }
 
-        $resourcePath = '/programs/{id_program}/platforms/{id_platform}/locales/{id_locale}';
+        if ($per_page !== null && $per_page > 100) {
+            throw new \InvalidArgumentException('invalid value for "$per_page" when calling ProgramsApi.findProgram, must be smaller than or equal to 100.');
+        }
+        if ($per_page !== null && $per_page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$per_page" when calling ProgramsApi.findProgram, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/programs';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -302,31 +300,23 @@ class ProgramsPlatformsLocalesApi
         if ($days_ago !== null) {
             $queryParams['daysAgo'] = ObjectSerializer::toQueryValue($days_ago);
         }
+        // query params
+        if ($min_downloads !== null) {
+            $queryParams['minDownloads'] = ObjectSerializer::toQueryValue($min_downloads);
+        }
+        // query params
+        if ($max_downloads !== null) {
+            $queryParams['maxDownloads'] = ObjectSerializer::toQueryValue($max_downloads);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($per_page !== null) {
+            $queryParams['perPage'] = ObjectSerializer::toQueryValue($per_page);
+        }
 
-        // path params
-        if ($id_program !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_program' . '}',
-                ObjectSerializer::toPathValue($id_program),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($id_platform !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_platform' . '}',
-                ObjectSerializer::toPathValue($id_platform),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($id_locale !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_locale' . '}',
-                ObjectSerializer::toPathValue($id_locale),
-                $resourcePath
-            );
-        }
 
         // body params
         $_tempBody = null;

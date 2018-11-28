@@ -1,6 +1,6 @@
 <?php
 /**
- * ProgramPlatformLocale
+ * Program
  *
  * PHP version 5
  *
@@ -34,14 +34,14 @@ use \JsonSerializable;
 use \Softonic\DownloadStatsApiSdk\ObjectSerializer;
 
 /**
- * ProgramPlatformLocale Class Doc Comment
+ * Program Class Doc Comment
  *
  * @category Class
  * @package  Softonic\DownloadStatsApiSdk
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializable
+class Program implements ModelInterface, ArrayAccess, JsonSerializable
 {
     const DISCRIMINATOR = null;
 
@@ -54,7 +54,7 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ProgramPlatformLocale';
+    protected static $swaggerModelName = 'Program';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,8 +63,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
       */
     protected static $swaggerTypes = [
         'id_program' => 'string',
-        'id_platform' => 'string',
-        'id_locale' => 'string',
         'downloads' => 'int'
     ];
 
@@ -75,8 +73,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
       */
     protected static $swaggerFormats = [
         'id_program' => null,
-        'id_platform' => null,
-        'id_locale' => null,
         'downloads' => null
     ];
 
@@ -108,8 +104,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     protected static $attributeMap = [
         'id_program' => 'id_program',
-        'id_platform' => 'id_platform',
-        'id_locale' => 'id_locale',
         'downloads' => 'downloads'
     ];
 
@@ -120,8 +114,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     protected static $setters = [
         'id_program' => 'setIdProgram',
-        'id_platform' => 'setIdPlatform',
-        'id_locale' => 'setIdLocale',
         'downloads' => 'setDownloads'
     ];
 
@@ -132,8 +124,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
      */
     protected static $getters = [
         'id_program' => 'getIdProgram',
-        'id_platform' => 'getIdPlatform',
-        'id_locale' => 'getIdLocale',
         'downloads' => 'getDownloads'
     ];
 
@@ -178,67 +168,8 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
         return self::$swaggerModelName;
     }
 
-    const ID_LOCALE_EN = 'en';
-    const ID_LOCALE_ES = 'es';
-    const ID_LOCALE_PT = 'pt';
-    const ID_LOCALE_FR = 'fr';
-    const ID_LOCALE_IT = 'it';
-    const ID_LOCALE_DE = 'de';
-    const ID_LOCALE_NL = 'nl';
-    const ID_LOCALE_PL = 'pl';
-    const ID_LOCALE_JA = 'ja';
-    const ID_LOCALE_BR = 'br';
-    const ID_LOCALE_JP = 'jp';
-    const ID_LOCALE_AR = 'ar';
-    const ID_LOCALE_RU = 'ru';
-    const ID_LOCALE_TH = 'th';
-    const ID_LOCALE_TR = 'tr';
-    const ID_LOCALE_ID = 'id';
-    const ID_LOCALE_SV = 'sv';
-    const ID_LOCALE_KO = 'ko';
-    const ID_LOCALE_VI = 'vi';
-    const ID_LOCALE_HU = 'hu';
-    const ID_LOCALE_RO = 'ro';
-    const ID_LOCALE_DA = 'da';
-    const ID_LOCALE_FI = 'fi';
-    const ID_LOCALE_NO = 'no';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getIdLocaleAllowableValues()
-    {
-        return [
-            self::ID_LOCALE_EN,
-            self::ID_LOCALE_ES,
-            self::ID_LOCALE_PT,
-            self::ID_LOCALE_FR,
-            self::ID_LOCALE_IT,
-            self::ID_LOCALE_DE,
-            self::ID_LOCALE_NL,
-            self::ID_LOCALE_PL,
-            self::ID_LOCALE_JA,
-            self::ID_LOCALE_BR,
-            self::ID_LOCALE_JP,
-            self::ID_LOCALE_AR,
-            self::ID_LOCALE_RU,
-            self::ID_LOCALE_TH,
-            self::ID_LOCALE_TR,
-            self::ID_LOCALE_ID,
-            self::ID_LOCALE_SV,
-            self::ID_LOCALE_KO,
-            self::ID_LOCALE_VI,
-            self::ID_LOCALE_HU,
-            self::ID_LOCALE_RO,
-            self::ID_LOCALE_DA,
-            self::ID_LOCALE_FI,
-            self::ID_LOCALE_NO,
-        ];
-    }
     
 
     /**
@@ -257,8 +188,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     public function __construct(array $data = [])
     {
         array_key_exists('id_program', $data) && $this->container['id_program'] = $data['id_program'];
-        array_key_exists('id_platform', $data) && $this->container['id_platform'] = $data['id_platform'];
-        array_key_exists('id_locale', $data) && $this->container['id_locale'] = $data['id_locale'];
         array_key_exists('downloads', $data) && $this->container['downloads'] = $data['downloads'];
     }
 
@@ -284,20 +213,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
         if ($this->container['id_program'] === null) {
             $invalidProperties[] = "'id_program' can't be null";
         }
-        if ($this->container['id_platform'] === null) {
-            $invalidProperties[] = "'id_platform' can't be null";
-        }
-        if ($this->container['id_locale'] === null) {
-            $invalidProperties[] = "'id_locale' can't be null";
-        }
-        $allowedValues = $this->getIdLocaleAllowableValues();
-        if (!in_array($this->container['id_locale'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'id_locale', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['downloads'] === null) {
             $invalidProperties[] = "'downloads' can't be null";
         }
@@ -314,12 +229,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     {
 
         if ($this->offsetGet('id_program') === null) {
-            return false;
-        }
-        if ($this->offsetGet('id_platform') === null) {
-            return false;
-        }
-        if ($this->offsetGet('id_locale') === null) {
             return false;
         }
         if ($this->offsetGet('downloads') === null) {
@@ -339,16 +248,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     {
 
         if (array_key_exists('id_program', $this->container) && $this->container['id_program'] === null) {
-            return false;
-        }
-        if (array_key_exists('id_platform', $this->container) && $this->container['id_platform'] === null) {
-            return false;
-        }
-        if (array_key_exists('id_locale', $this->container) && $this->container['id_locale'] === null) {
-            return false;
-        }
-        $allowedValues = $this->getIdLocaleAllowableValues();
-        if (array_key_exists('id_locale', $this->container) && !in_array($this->container['id_locale'], $allowedValues)) {
             return false;
         }
         if (array_key_exists('downloads', $this->container) && $this->container['downloads'] === null) {
@@ -378,63 +277,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     public function setIdProgram($id_program)
     {
         $this->container['id_program'] = $id_program;
-
-        return $this;
-    }
-
-    /**
-     * Gets id_platform
-     *
-     * @return string
-     */
-    public function getIdPlatform()
-    {
-        return array_key_exists('id_platform', $this->container) ? $this->container['id_platform'] : null;
-    }
-
-    /**
-     * Sets id_platform
-     *
-     * @param string $id_platform Platform identifier
-     *
-     * @return $this
-     */
-    public function setIdPlatform($id_platform)
-    {
-        $this->container['id_platform'] = $id_platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets id_locale
-     *
-     * @return string
-     */
-    public function getIdLocale()
-    {
-        return array_key_exists('id_locale', $this->container) ? $this->container['id_locale'] : null;
-    }
-
-    /**
-     * Sets id_locale
-     *
-     * @param string $id_locale Locale identifier
-     *
-     * @return $this
-     */
-    public function setIdLocale($id_locale)
-    {
-        $allowedValues = $this->getIdLocaleAllowableValues();
-        if (!in_array($id_locale, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'id_locale', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['id_locale'] = $id_locale;
 
         return $this;
     }
@@ -557,8 +399,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
 
         $data = [];
         $data['id_program'] = $this->getIdProgram();
-        $data['id_platform'] = $this->getIdPlatform();
-        $data['id_locale'] = $this->getIdLocale();
         $data['downloads'] = $this->getDownloads();
 
         return $data;
