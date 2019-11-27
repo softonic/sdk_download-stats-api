@@ -187,8 +187,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     const ID_LOCALE_NL = 'nl';
     const ID_LOCALE_PL = 'pl';
     const ID_LOCALE_JA = 'ja';
-    const ID_LOCALE_BR = 'br';
-    const ID_LOCALE_JP = 'jp';
     const ID_LOCALE_AR = 'ar';
     const ID_LOCALE_RU = 'ru';
     const ID_LOCALE_TH = 'th';
@@ -202,6 +200,10 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
     const ID_LOCALE_DA = 'da';
     const ID_LOCALE_FI = 'fi';
     const ID_LOCALE_NO = 'no';
+    const ID_LOCALE_HI = "hi";
+    const ID_LOCALE_FA = "fa";
+    const ID_LOCALE_SW = "sw";
+    const ID_LOCALE_ZH = "zh";
     
 
     
@@ -222,8 +224,6 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
             self::ID_LOCALE_NL,
             self::ID_LOCALE_PL,
             self::ID_LOCALE_JA,
-            self::ID_LOCALE_BR,
-            self::ID_LOCALE_JP,
             self::ID_LOCALE_AR,
             self::ID_LOCALE_RU,
             self::ID_LOCALE_TH,
@@ -237,6 +237,10 @@ class ProgramPlatformLocale implements ModelInterface, ArrayAccess, JsonSerializ
             self::ID_LOCALE_DA,
             self::ID_LOCALE_FI,
             self::ID_LOCALE_NO,
+            self::ID_LOCALE_HI,
+            self::ID_LOCALE_FA,
+            self::ID_LOCALE_SW,
+            self::ID_LOCALE_ZH,
         ];
     }
     
