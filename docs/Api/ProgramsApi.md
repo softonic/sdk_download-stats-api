@@ -1,10 +1,12 @@
 # Softonic\DownloadStatsApiSdk\ProgramsApi
 
-All URIs are relative to *https://download-stats-v1.eu-west.sftapi.com*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**findProgram**](ProgramsApi.md#findProgram) | **GET** /programs | Get the list of the downloads stats ordered by downloads
+[**getProgramPlatform**](ProgramsApi.md#getProgramPlatform) | **GET** /programs/{id_program}/platforms/{id_platform} | Get the list of the downloads stats for a given program platform
+[**getProgramPlatformLanguage**](ProgramsApi.md#getProgramPlatformLanguage) | **GET** /programs/{id_program}/platforms/{id_platform}/languages/{id_language} | Get the list of the downloads stats for a given program platform language
 
 
 # **findProgram**
@@ -17,10 +19,14 @@ Get the list of the downloads stats ordered by downloads
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Softonic\DownloadStatsApiSdk\Api\ProgramsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $days_ago = 56; // int | Take into account downloads from last given days
 $min_downloads = 56; // int | Take into account programs with at least the given downloads
@@ -53,7 +59,119 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[softonic](../../README.md#softonic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getProgramPlatform**
+> \Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatform getProgramPlatform($id_program, $id_platform, $days_ago)
+
+Get the list of the downloads stats for a given program platform
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Softonic\DownloadStatsApiSdk\Api\ProgramsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id_program = "id_program_example"; // string | Program identifier
+$id_platform = "id_platform_example"; // string | Platform identifier
+$days_ago = 8.14; // float | Take into account downloads from last given days
+
+try {
+    $result = $apiInstance->getProgramPlatform($id_program, $id_platform, $days_ago);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProgramsApi->getProgramPlatform: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id_program** | **string**| Program identifier |
+ **id_platform** | **string**| Platform identifier |
+ **days_ago** | **float**| Take into account downloads from last given days | [optional]
+
+### Return type
+
+[**\Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatform**](../Model/ProgramPlatform.md)
+
+### Authorization
+
+[softonic](../../README.md#softonic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getProgramPlatformLanguage**
+> \Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLanguage getProgramPlatformLanguage($id_program, $id_platform, $id_language, $days_ago)
+
+Get the list of the downloads stats for a given program platform language
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Softonic\DownloadStatsApiSdk\Api\ProgramsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id_program = "id_program_example"; // string | Program identifier
+$id_platform = "id_platform_example"; // string | Platform identifier
+$id_language = "id_language_example"; // string | Language identifier
+$days_ago = 8.14; // float | Take into account downloads from last given days
+
+try {
+    $result = $apiInstance->getProgramPlatformLanguage($id_program, $id_platform, $id_language, $days_ago);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProgramsApi->getProgramPlatformLanguage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id_program** | **string**| Program identifier |
+ **id_platform** | **string**| Platform identifier |
+ **id_language** | **string**| Language identifier |
+ **days_ago** | **float**| Take into account downloads from last given days | [optional]
+
+### Return type
+
+[**\Softonic\DownloadStatsApiSdk\Client\Model\ProgramPlatformLanguage**](../Model/ProgramPlatformLanguage.md)
+
+### Authorization
+
+[softonic](../../README.md#softonic)
 
 ### HTTP request headers
 

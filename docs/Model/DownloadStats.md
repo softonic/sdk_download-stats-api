@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Download stats identifier | 
-**locale** | **string** | Locale | 
+**language** | **string** | Language | 
 **country** | **string** | Country | 
 **app_id** | **string** | App id | 
 **date** | [**\DateTime**](\DateTime.md) | Date | 

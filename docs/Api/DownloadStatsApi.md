@@ -1,6 +1,6 @@
 # Softonic\DownloadStatsApiSdk\DownloadStatsApi
 
-All URIs are relative to *https://download-stats-v1.eu-west.sftapi.com*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,10 +20,14 @@ Retrieves the given downloads statistics
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Download stats identifier
 
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[softonic](../../README.md#softonic)
 
 ### HTTP request headers
 
@@ -67,12 +71,16 @@ Get the list of the downloads statistics for a given app
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$accept_language = "accept_language_example"; // string | Locale
+$accept_language = "accept_language_example"; // string | Language
 $app_id = "app_id_example"; // string | App id
 $country = "country_example"; // string | Country
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Take into account downloads from that date. ISO 8601 format
@@ -92,7 +100,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accept_language** | **string**| Locale |
+ **accept_language** | **string**| Language |
  **app_id** | **string**| App id | [optional]
  **country** | **string**| Country | [optional]
  **date** | **\DateTime**| Take into account downloads from that date. ISO 8601 format | [optional]
@@ -105,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[softonic](../../README.md#softonic)
 
 ### HTTP request headers
 
@@ -124,12 +132,16 @@ Creates the downloads statistics for a given app
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$accept_language = "accept_language_example"; // string | Locale
+$accept_language = "accept_language_example"; // string | Language
 $download_stats_input = new \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput(); // \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput | 
 
 try {
@@ -144,7 +156,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accept_language** | **string**| Locale |
+ **accept_language** | **string**| Language |
  **download_stats_input** | [**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput**](../Model/DownloadStatsInput.md)|  | [optional]
 
 ### Return type
@@ -153,7 +165,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[softonic](../../README.md#softonic)
 
 ### HTTP request headers
 
@@ -172,13 +184,17 @@ Replaces the given downloads statistics
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: softonic
+$config = Softonic\DownloadStatsApiSdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Softonic\DownloadStatsApiSdk\Api\DownloadStatsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Download stats identifier
-$accept_language = "accept_language_example"; // string | Locale
+$accept_language = "accept_language_example"; // string | Language
 $download_stats_input = new \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput(); // \Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput | 
 
 try {
@@ -194,7 +210,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Download stats identifier |
- **accept_language** | **string**| Locale |
+ **accept_language** | **string**| Language |
  **download_stats_input** | [**\Softonic\DownloadStatsApiSdk\Client\Model\DownloadStatsInput**](../Model/DownloadStatsInput.md)|  | [optional]
 
 ### Return type
@@ -203,7 +219,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[softonic](../../README.md#softonic)
 
 ### HTTP request headers
 
